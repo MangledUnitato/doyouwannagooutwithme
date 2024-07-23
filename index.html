@@ -13,23 +13,30 @@
 <body>
     <div class="container">
         <h1 class="header_text">Picture of the Day</h1>
-        <img id="dailyImage" src="images/image1.jpg" alt="Daily Picture">
+        <img id="dailyImage" src="images/image01.jpg" alt="Daily Picture">
+        <p id="dailyMessage">Today's romantic message will appear here.</p>
+
     </div>
 
     <script>
-        // Number of images in the images folder
-        const imageCount = 6; // Adjust this number to the actual number of images you have
+        // Array of images and messages
+        const images = [
+            { src: 'images/image01.jpg', message: 'You make every day brighter.' },
+            { src: 'images/image02.jpg', message: 'I love you more than words can say.' },
+            { src: 'images/image03.jpg', message: 'You are my sunshine.' }
+            // Add more images and messages as needed
+        ];
 
-        // Get the current date
-        // const currentDate = new Date();
-        // const dayOfYear = Math.floor((currentDate - new Date(currentDate.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+        // Function to display a random image and message
+        function displayDailyPicture() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const chosenImage = images[randomIndex];
+            document.getElementById('dailyImage').src = chosenImage.src;
+            document.getElementById('dailyMessage').textContent = chosenImage.message;
+        }
 
-        // Determine the image index for today
-        // const imageIndex = dayOfYear % imageCount + 1;
-
-        // Set the image source
-        // const dailyImage = document.getElementById('dailyImage');
-        // dailyImage.src = `images/image${imageIndex}.jpg`;
+        // Call the function initially to display the first picture and message
+        displayDailyPicture();
     </script>
 </body>
 
