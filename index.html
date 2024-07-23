@@ -4,39 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily picture for Timea</title>
+    <title>Daily Picture for Timea</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
 </head>
 
 <body>
     <div class="container">
         <h1 class="header_text">Picture of the Day</h1>
-        <img id="dailyImage" src="images/image01.jpg" alt="Daily Picture">
-        <p id="dailyMessage">Today's romantic message will appear here.</p>
-
+        <img id="dailyImage" src="" alt="Daily Picture">
+        <p id="dailyQuote"></p>
     </div>
 
     <script>
-        // Array of images and messages
-        const images = [
-            { src: 'images/image01.jpg', message: 'You make every day brighter.' },
-            { src: 'images/image02.jpg', message: 'I love you more than words can say.' },
-            { src: 'images/image03.jpg', message: 'You are my sunshine.' }
-            // Add more images and messages as needed
+        // Array of image paths
+        const imageQuotes = [
+            { src: 'images/image01.jpg', quote: "You are the light of my life" },
+            { src: 'images/image02.jpg', quote: "Your love is my greatest treasure" },
+            { src: 'images/image03.jpg', quote: "I love you more with each passing day" },
+            { src: 'images/image04.jpg', quote: "You are my everything" },
+            { src: 'images/image05.jpg', quote: "My heart belongs to you" },
+            { src: 'images/image06.jpg', quote: "With you, I am home" },
+            { src: 'images/image07.jpg', quote: "You are my forever and always" },
+            { src: 'images/image08.jpg', quote: "I can't imagine my life without you" },
+            { src: 'images/image09.jpg', quote: "You complete me" },
+            { src: 'images/image10.jpg', quote: "You are my dream come true" },
+            { src: 'images/image11.jpg', quote: "Your love is my anchor" },
+            { src: 'images/image12.jpg', quote: "You make my heart skip a beat" },
+            { src: 'images/image13.jpg', quote: "Loving you is my favourite thing to do" },
+            { src: 'images/image14.jpg', quote: "You are my heart's desire" },
+            { src: 'images/image15.jpg', quote: "You make my world a better place" },
+            { src: 'images/image16.jpg', quote: "You are my one and only" }
         ];
 
-        // Function to display a random image and message
-        function displayDailyPicture() {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            const chosenImage = images[randomIndex];
-            document.getElementById('dailyImage').src = chosenImage.src;
-            document.getElementById('dailyMessage').textContent = chosenImage.message;
+        // Function to get a new random image index
+        function getRandomIndex(arrayLength) {
+            return Math.floor(Math.random() * arrayLength);
         }
 
-        // Call the function initially to display the first picture and message
-        displayDailyPicture();
+        // Function to display the daily picture and quote
+        function displayDailyContent() {
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            let savedDate = localStorage.getItem('dailyContentDate');
+            let contentIndex;
+
+            if (savedDate === today) {
+                // If the date matches, use the saved index
+                contentIndex = localStorage.getItem('dailyContentIndex');
+            } else {
+                // If the date doesn't match or doesn't exist, select a new index
+                contentIndex = getRandomIndex(imageQuotes.length);
+                localStorage.setItem('dailyContentDate', today);
+                localStorage.setItem('dailyContentIndex', contentIndex);
+            }
+
+            const chosenContent = imageQuotes[contentIndex];
+            document.getElementById('dailyImage').src = chosenContent.src;
+            document.getElementById('dailyQuote').textContent = chosenContent.quote;
+        }
+
+        // Call the function to display the daily picture and quote
+        displayDailyContent();
     </script>
 </body>
 

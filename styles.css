@@ -11,12 +11,14 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    width: 100%; /* Make sure container takes full width */
 }
 
 img {
-    width: 500px;
-    height: 500px;
     max-width: 100%;
+    max-height: 700px;
+    width: auto;
     height: auto;
     border-radius: 10px;
     display: block;
@@ -25,7 +27,7 @@ img {
 }
 
 .header_text {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Georgia', serif;
     font-size: 40px;
     font-weight: bold;
     color: white;
@@ -34,50 +36,44 @@ img {
     margin-bottom: 20px;
 }
 
-#dailyMessage {
-    font-size: 24px;
-    color: #333;
+#dailyQuote {
+    font-family: 'Georgia', serif;
+    font-size: 1.5em;
+    color: #555;
     margin-top: 20px;
 }
 
-
-
-/* This is a single-line comment 
-
-@media only screen and (max-width: 320px) and (max-height: 568px) {
-    body {
-        height: 100vh;
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .header_text {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
-    .header_text {
-        font-size: 20px;
+    #dailyQuote {
+        font-size: 1.2em;
+        margin-top: 10px;
     }
 
     img {
-        height: 60vh;
-    }
-
-    .btn {
-        padding: 10px 18px;
-        font-size: 12px;
+        max-height: 400px;
     }
 }
 
-@media only screen and (max-width: 414px) and (max-height: 736px) {
-    body {
-        height: 90vh;
+@media (max-height: 600px) {
+    .header_text {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
-    .header_text {
-        font-size: 28px;
+    #dailyQuote {
+        font-size: 1.2em;
+        margin-top: 10px;
     }
 
     img {
-        height: 60vh;
+        max-height: 400px;
     }
-
-    .btn {
-        padding: 15px 25px;
-        font-size: 14px;
-    }
-}*/
+}
